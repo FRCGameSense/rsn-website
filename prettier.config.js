@@ -1,6 +1,6 @@
 /** @type {import('prettier').Options} */
+import prettierConfig from './prettierrc.json';
 module.exports = {
-  singleQuote: true,
-  semi: false,
+  ...prettierConfig,
   plugins: ['prettier-plugin-tailwindcss'],
 }

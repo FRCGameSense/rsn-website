@@ -7,7 +7,7 @@ import {
   InstagramIcon,
   TwitchIcon,
   XIcon,
-  YoutubeIcon
+  YoutubeIcon,
 } from '@/components/SocialIcons';
 import portraitImage from '@/images/portrait.jpg';
 import { MailIcon, Member, SocialLink } from './components';
@@ -15,9 +15,8 @@ import { allMembers } from './members';
 
 export const metadata: Metadata = {
   title: 'About',
-  description:
-    'Robosports Network Members',
-}
+  description: 'Robosports Network Members',
+};
 
 export default function About() {
   return (
@@ -40,54 +39,55 @@ export default function About() {
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
               We&apos;re a group of FIRST Robotics Competition alumni who are
-              passionate about sharing our knowledge and experiences with theF
-              community. We&apos;ve been broadcasting live shows and creating content
-              for the FRC community since 2014.
+              passionate about sharing our knowledge and experiences with the
+              community. We&apos;ve been broadcasting live shows and creating
+              content for the FRC community since 2014.
             </p>
           </div>
         </div>
         <div className="lg:col-span-2 flex flex-col space-y-3">
-
-            {Object.values(allMembers).map((member) => (
-              <Member key={member.first} member={member} />
-            ))}
-            </div>
+          {Object.values(allMembers).map(member => (
+            <Member key={member.first} member={member} />
+          ))}
+        </div>
         <div className="lg:pl-20">
           <ul role="list">
-             <SocialLink
-              href="#"
+            <SocialLink
+              href="https://www.twitch.tv/robosportsnetwork"
               aria-label="Follow on Twitch"
               icon={TwitchIcon}
             >
               Follow on Twitch
-              </SocialLink>
+            </SocialLink>
             <SocialLink
               href="https://www.youtube.com/c/RoboSportsNetwork"
               aria-label="Follow on YouTube"
               icon={YoutubeIcon}
             >
               Follow on YouTube
-              </SocialLink>
-            <SocialLink href="https://twitter.com/robosportsnet" 
-            aria-label="Follow on X"
-             icon={XIcon} >
+            </SocialLink>
+            <SocialLink
+              href="https://twitter.com/robosportsnet"
+              aria-label="Follow on X"
+              icon={XIcon}
+            >
               Follow on X
-              </SocialLink>
+            </SocialLink>
             <SocialLink
               href="https://www.instagram.com/robosportsnet/"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
             >
               Follow on Instagram
-              </SocialLink>
+            </SocialLink>
             <SocialLink
               href="https://github.com/RoboSportsNetwork"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             >
               Follow on GitHub
-              </SocialLink>
-              
+            </SocialLink>
+
             <SocialLink
               href="mailto:frcgamesense@gmail.com"
               icon={MailIcon}
@@ -99,5 +99,5 @@ export default function About() {
         </div>
       </div>
     </Container>
-  )
+  );
 }

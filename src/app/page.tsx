@@ -8,7 +8,7 @@ import {
   InstagramIcon,
   TwitchIcon,
   XIcon,
-  YoutubeIcon
+  YoutubeIcon,
 } from '@/components/SocialIcons';
 import image1 from '@/images/photos/image-1.png';
 import image2 from '@/images/photos/image-2.png';
@@ -20,18 +20,23 @@ function SocialLink({
   icon: Icon,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Link> & {
-  icon: React.ComponentType<{ className?: string }>
+  icon: React.ComponentType<{ className?: string }>;
 }) {
   return (
     <Link className="group -m-1 p-1" {...props}>
       <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
     </Link>
-  )
+  );
 }
 
-
 function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
+  let rotations = [
+    'rotate-2',
+    '-rotate-2',
+    'rotate-2',
+    'rotate-2',
+    '-rotate-2',
+  ];
 
   return (
     <div className="mt-16 sm:mt-20">
@@ -54,11 +59,10 @@ function Photos() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 export default async function Home() {
-
   return (
     <>
       <Container className="mt-9">
@@ -68,9 +72,9 @@ export default async function Home() {
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             We are a group of passionate individuals who love to build robots
-            and compete in robotics competitions. We are a community of students,
-            mentors, and volunteers who are dedicated to promoting STEM education
-            and robotics.
+            and compete in robotics competitions. We are a community of
+            students, mentors, and volunteers who are dedicated to promoting
+            STEM education and robotics.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -83,7 +87,11 @@ export default async function Home() {
               aria-label="Follow on YouTube"
               icon={YoutubeIcon}
             />
-            <SocialLink href="https://twitter.com/FRCGameSense" aria-label="Follow on X" icon={XIcon} />
+            <SocialLink
+              href="https://twitter.com/robosportsnet"
+              aria-label="Follow on X"
+              icon={XIcon}
+            />
             <SocialLink
               href="https://www.instagram.com/robosportsnet/"
               aria-label="Follow on Instagram"
@@ -99,5 +107,5 @@ export default async function Home() {
       </Container>
       <Photos />
     </>
-  )
+  );
 }
