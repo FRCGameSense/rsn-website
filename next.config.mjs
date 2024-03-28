@@ -1,10 +1,11 @@
-import rehypePrism from '@mapbox/rehype-prism'
-import nextMDX from '@next/mdx'
-import remarkGfm from 'remark-gfm'
+import rehypePrism from '@mapbox/rehype-prism';
+import nextMDX from '@next/mdx';
+import remarkGfm from 'remark-gfm';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  basePath: '',
 }
 
 const withMDX = nextMDX({
