@@ -68,7 +68,7 @@ export default function About() {
             >
               Follow on YouTube
               </SocialLink>
-            <SocialLink href="https://twitter.com/FRCGameSense" 
+            <SocialLink href="https://twitter.com/robosportnet" 
             aria-label="Follow on X"
              icon={XIcon} >
               Follow on X
@@ -96,7 +96,7 @@ export default function About() {
               frcgamesense@gmail.com
             </SocialLink>
           </ul>
-        d</div>
+        </div>
       </div>
     </Container>
   )
