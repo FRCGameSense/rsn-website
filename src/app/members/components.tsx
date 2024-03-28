@@ -1,5 +1,7 @@
+import { Card } from '@/components/Card';
 import clsx from 'clsx';
 import Link from 'next/link';
+import type { Member } from './members';
 
 export function SocialLink({
   className,
@@ -33,5 +35,22 @@ export function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
       />
     </svg>
+  )
+}
+
+
+
+export function Member({ member }: { member: Member }) {
+  return (
+    <div className="md:grid md:grid-cols-4 bg-zinc-800 rounded-lg">
+      <Card.Image src={member.image} alt={`${member.first} ${member.last}`} />
+      <Card className="md:col-span-3 ml-2">
+        <Card.Title href={`/members/${member.first.toLowerCase()}`}>
+          {`${member.first} ${member.last}`}
+        </Card.Title>       
+        <Card.Description>{member.bio.substring(0, 400) + " ..."}</Card.Description>
+        <Card.Cta>See more</Card.Cta>
+      </Card>
+    </div>
   )
 }

@@ -1,7 +1,6 @@
 import { type Metadata } from 'next';
 import Image from 'next/image';
 
-import { Card } from '@/components/Card';
 import { Container } from '@/components/Container';
 import {
   GitHubIcon,
@@ -11,37 +10,8 @@ import {
   YoutubeIcon
 } from '@/components/SocialIcons';
 import portraitImage from '@/images/portrait.jpg';
-import { MailIcon, SocialLink } from './components';
-import { Member, allMembers } from './members';
-
-
-function Member({ member }: { member: Member }) {
-  return (
-    <article className="md:grid md:grid-cols-4 md:items-baseline">
-      <Card className="md:col-span-3">
-        <Card.Title href={`/members/${member.first.toLowerCase()}`}>
-          {`${member.first} ${member.last}`}
-        </Card.Title>
-        <Card.Eyebrow
-          as="p"
-          className="md:hidden"
-          decorate
-        >
-          {`${member.first} ${member.last}`}
-        </Card.Eyebrow>
-        <Card.Description>{member.bio.substring(0, 400) + " ..."}</Card.Description>
-        <Card.Cta>See more</Card.Cta>
-      </Card>
-        <Card.Eyebrow
-          as="p"
-          className="md:hidden"
-          decorate
-        >
-          {`${member.first} ${member.last}`}
-        </Card.Eyebrow>
-    </article>
-  )
-}
+import { MailIcon, Member, SocialLink } from './components';
+import { allMembers } from './members';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -74,11 +44,14 @@ export default function About() {
               community. We&apos;ve been broadcasting live shows and creating content
               for the FRC community since 2014.
             </p>
+          </div>
+        </div>
+        <div className="lg:col-span-2 flex flex-col space-y-3">
+
             {Object.values(allMembers).map((member) => (
               <Member key={member.first} member={member} />
             ))}
-          </div>
-        </div>
+            </div>
         <div className="lg:pl-20">
           <ul role="list">
              <SocialLink
@@ -123,7 +96,7 @@ export default function About() {
               frcgamesense@gmail.com
             </SocialLink>
           </ul>
-        </div>
+        d</div>
       </div>
     </Container>
   )

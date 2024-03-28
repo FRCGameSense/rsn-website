@@ -71,12 +71,12 @@ export const mason_markee: Member = {
 }
 
 export const allMembers: Record<string, Member> = {
-  justin: justin_foss,
   steve: steve_kaneb,
-  dave: dave_powers,
   matt: matt_starke,
   ruth: ruth_toomey,
-  izzy: izzy_thalman,
+  mason: mason_markee,
   karthik: karthik_kanagasabapathy,
-  mason: mason_markee
+  justin: justin_foss,
+  izzy: izzy_thalman,
+  dave: dave_powers,
 }
