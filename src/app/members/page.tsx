@@ -70,7 +70,7 @@ export default function About() {
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
               We&apos;re a group of FIRST Robotics Competition alumni who are
-              passionate about sharing our knowledge and experiences with the
+              passionate about sharing our knowledge and experiences with theF
               community. We&apos;ve been broadcasting live shows and creating content
               for the FRC community since 2014.
             </p>
