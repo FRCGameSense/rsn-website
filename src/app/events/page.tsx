@@ -12,7 +12,7 @@ function EventsSection({
     <Section {...props}>
       <div className="space-y-16">{children}</div>
     </Section>
-  )
+  );
 }
 
 function Appearance({
@@ -22,11 +22,11 @@ function Appearance({
   cta,
   href,
 }: {
-  title: string
-  description: string
-  event: string
-  cta: string
-  href: string
+  title: string;
+  description: string;
+  event: string;
+  cta: string;
+  href: string;
 }) {
   return (
     <Card as="article">
@@ -37,14 +37,14 @@ function Appearance({
       <Card.Description>{description}</Card.Description>
       <Card.Cta>{cta}</Card.Cta>
     </Card>
-  )
+  );
 }
 
 export const metadata: Metadata = {
   title: 'Events',
   description:
     'See past and upcoming events Robosports Network will broadcating.',
-}
+};
 
 export default function Speaking() {
   return (
@@ -57,11 +57,10 @@ export default function Speaking() {
           <Appearance
             href="https://www.firstchampionship.org/watch"
             title="FIRST Championship 2024"
-            description="FIRSTChampLIVE is back for the 2024 Season!  We'll bring you the best matches and analysis live from the event."
+            description="FIRSTChampsLIVE is back for the 2024 Season!  We'll bring you the best matches and analysis live from the event."
             event="Houston, TX"
             cta="Watch"
           />
-          
         </EventsSection>
         <EventsSection title="Recent">
           <Appearance
@@ -74,5 +73,5 @@ export default function Speaking() {
         </EventsSection>
       </div>
     </SimpleLayout>
-  )
+  );
 }
