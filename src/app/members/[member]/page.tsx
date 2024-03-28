@@ -10,6 +10,13 @@ import {
 import { MailIcon, SocialLink } from '../components';
 import { allMembers } from '../members';
 
+export async function generateStaticParams() {
+  return Object.keys(allMembers).map((member) => ({
+    member
+  }));
+
+}
+
 export async function generateMetadata({params}: {params: {member: string}}) {
   const m = allMembers[params.member];
   return {
