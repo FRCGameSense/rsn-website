@@ -10,15 +10,7 @@ export type EventSummaryProps = {
 
 function EventSummary({ team, teamColors, event, status }: EventSummaryProps) {
   if (!team || !teamColors || !event || !status) {
-    return (
-      <div>
-        <h2>Error</h2>
-        <p>Missing data</p>
-        <pre>
-          {JSON.stringify({ team, teamColors, event, status }, null, 2)}
-        </pre>
-      </div>
-    );
+    return null;
   }
   return (
     <svg
