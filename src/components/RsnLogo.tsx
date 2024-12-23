@@ -53,5 +53,5 @@ export default function RsnLogo() {
         </clipPath>
       </defs>
     </svg>
-  )
+  );
 }
