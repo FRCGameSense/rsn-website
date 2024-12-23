@@ -33,6 +33,17 @@ export interface EventSimple {
   year: number;
 }
 
+export interface Award {
+  name: string;
+  award_type: number;
+  event_key: string;
+  recipient_list: {
+    team_key: string;
+    awardee: string;
+  }[];
+  year: number;
+}
+
 export interface TeamEventStatus {
   qual: {
     num_teams: number;
@@ -142,39 +153,20 @@ async function fetchTeamEvents(
   return events;
 }
 
-async function fetchAllTeams(year: number): Promise<number[]> {
-  let pageNum = 0;
-  let allTeams: string[] = [];
-  let hasMoreTeams = true;
-
-  while (hasMoreTeams) {
-    const response = await fetch(
-      `${API_BASE_URL}/teams/${year}/${pageNum}/keys`,
-      {
-        headers: {
-          'X-TBA-Auth-Key': API_KEY,
-        },
-      },
-    );
-
+export function fetchTeamAwards(
+  teamKey: string,
+  year: number,
+): Promise<Award[]> {
+  return fetch(`${API_BASE_URL}/team/${teamKey}/awards/${year}`, {
+    headers: {
+      'X-TBA-Auth-Key': API_KEY,
+    },
+  }).then(response => {
     if (!response.ok) {
-      throw new Error(`Error fetching teams: ${response.statusText}`);
+      throw new Error(`Error fetching team awards: ${response.statusText}`);
     }
-
-    const teams: string[] = await response.json();
-    if (teams.length === 0) {
-      hasMoreTeams = false;
-    } else {
-      allTeams = allTeams.concat(teams);
-      pageNum++;
-    }
-  }
-  const teams = allTeams.map(teamKey => parseInt(teamKey.slice(3)));
-  console.log(teams);
-
-  return teams;
+    return response.json();
+  });
 }
-
-export { fetchAllTeams };
 
 export { fetchTeam, fetchTeamEvents, fetchTeamEventStatuses };

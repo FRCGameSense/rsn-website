@@ -1,4 +1,4 @@
-import { EventSimple, Team, TeamEventStatus } from '@/lib/tba';
+import { Award, EventSimple, Team, TeamEventStatus } from '@/lib/tba';
 import type { TeamColors } from '@/lib/teamColors';
 import fontColorContrast from 'font-color-contrast';
 
@@ -7,9 +7,16 @@ export type EventSummaryProps = {
   teamColors?: TeamColors;
   event?: EventSimple;
   status?: TeamEventStatus;
+  awards?: Award[];
 };
 
-function EventSummary({ team, teamColors, event, status }: EventSummaryProps) {
+function EventSummary({
+  team,
+  teamColors,
+  event,
+  status,
+  awards,
+}: EventSummaryProps) {
   if (!team || !teamColors || !event || !status) {
     return null;
   }
@@ -83,7 +90,7 @@ function EventSummary({ team, teamColors, event, status }: EventSummaryProps) {
         fontWeight="bold"
         fill={fontColorContrast(teamColors.primaryHex)}
       >
-        Event Record
+        Record
       </text>
       <rect
         x="40"
@@ -142,7 +149,7 @@ function EventSummary({ team, teamColors, event, status }: EventSummaryProps) {
         fontWeight="bold"
         fill={fontColorContrast(teamColors.primaryHex)}
       >
-        Final Rank
+        Rank
       </text>
       <rect
         x="40"
@@ -160,40 +167,43 @@ function EventSummary({ team, teamColors, event, status }: EventSummaryProps) {
         fill={fontColorContrast(teamColors.secondaryHex)}
         textAnchor="middle"
       >
-        {status.qual.ranking.rank}
+        {status.qual.ranking.rank} / {status.qual.num_teams}
       </text>
-
-      <text
-        x="60"
-        y="760"
-        fontFamily="Orbitron"
-        fontSize="32"
-        fontWeight="bold"
-        fill={fontColorContrast(teamColors.primaryHex)}
-      >
-        Awards
-      </text>
-      <rect
-        x="40"
-        y="780"
-        width="460"
-        height="90"
-        fill={teamColors.secondaryHex}
-        rx="10"
-      />
-      {['award1', 'award2'].map((award, index) => (
-        <text
-          key={index}
-          x="50"
-          y={810 + index * 35}
-          fontFamily="Orbitron"
-          fontSize="24"
-          fill={fontColorContrast(teamColors.secondaryHex)}
-          textAnchor="left"
-        >
-          • {award}
-        </text>
-      ))}
+      {awards && awards.length > 0 && (
+        <>
+          <text
+            x="60"
+            y="760"
+            fontFamily="Orbitron"
+            fontSize="32"
+            fontWeight="bold"
+            fill={fontColorContrast(teamColors.primaryHex)}
+          >
+            Awards
+          </text>
+          <rect
+            x="40"
+            y="780"
+            width="460"
+            height="90"
+            fill={teamColors.secondaryHex}
+            rx="10"
+          />
+          {awards.map((award, index) => (
+            <text
+              key={index}
+              x="50"
+              y={810 + index * 35}
+              fontFamily="Orbitron"
+              fontSize="24"
+              fill={fontColorContrast(teamColors.secondaryHex)}
+              textAnchor="left"
+            >
+              • {award.name}
+            </text>
+          ))}
+        </>
+      )}
       <rect x="0" y="930" width="540" height="30" fill="black" />
       <text
         x="530"

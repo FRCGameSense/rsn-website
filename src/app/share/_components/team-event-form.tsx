@@ -21,7 +21,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { fetchTeam, fetchTeamEvents, fetchTeamEventStatuses } from '@/lib/tba';
+import {
+  fetchTeam,
+  fetchTeamAwards,
+  fetchTeamEvents,
+  fetchTeamEventStatuses,
+} from '@/lib/tba';
 import { fetchTeamColors } from '@/lib/teamColors';
 import { useQuery } from '@tanstack/react-query';
 import { useMemo, useState } from 'react';
@@ -88,6 +93,16 @@ export function TeamEventForm() {
   } = useQuery({
     queryKey: ['eventSummary', eventKey],
     queryFn: () => fetchTeamEventStatuses(teamKey, Number(year)),
+    enabled: teamForm.formState.isSubmitted,
+  });
+
+  const {
+    data: teamAwards,
+    error: teamAwardsError,
+    isLoading: teamAwardsLoading,
+  } = useQuery({
+    queryKey: ['teamAwards', teamKey],
+    queryFn: () => fetchTeamAwards(teamKey, Number(year)),
     enabled: teamForm.formState.isSubmitted,
   });
 
@@ -193,6 +208,7 @@ export function TeamEventForm() {
             team={team}
             status={eventSummaries[eventKey]}
             teamColors={teamColors}
+            awards={teamAwards?.filter(a => a.event_key === eventKey)}
           />
         </div>
       )}
