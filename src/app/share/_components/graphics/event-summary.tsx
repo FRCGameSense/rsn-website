@@ -194,13 +194,7 @@ function EventSummary({ team, teamColors, event, status }: EventSummaryProps) {
           • {award}
         </text>
       ))}
-      <rect
-        x="0"
-        y="930"
-        width="540"
-        height="30"
-        fill={fontColorContrast(teamColors.primaryHex)}
-      />
+      <rect x="0" y="930" width="540" height="30" fill="black" />
       <text
         x="530"
         y="950"
