@@ -30,6 +30,7 @@
     "clsx": "^2.1.1",
     "fast-glob": "^3.3.2",
     "feed": "^4.2.2",
+    "font-color-contrast": "^11.1.0",
     "lucide-react": "^0.469.0",
     "next": "^14.2.21",
     "next-themes": "^0.2.1",
